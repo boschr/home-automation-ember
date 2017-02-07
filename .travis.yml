@@ -1,24 +1,26 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - bower --version
-  - npm install phantomjs-prebuilt
-  - node_modules/phantomjs-prebuilt/bin/phantomjs --version
-
+- npm config set spin false
+- npm install -g bower
+- bower --version
+- npm install phantomjs-prebuilt
+- node_modules/phantomjs-prebuilt/bin/phantomjs --version
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: gpcxGMlyOifW7WIKK6wtNtw9XcoxBDODXToIeTAgy84bLh5DJy6AMO1u+IAS8vn9NC2hNnMfS5vhe9qTxFKvnzWc2L5Lmbf1HmhjlyqrZfT4ldxF0HK+kAp4ISJ3Ye45XeppZQ9SaMJ6Y5E6+M2Qp+dwF/eWV0np05OCSUNk/sU42eUmKXKeE4qUDCT18DrQ+Ezh2dGMSNKD3kt4Hhbtd0H14PpB4PZ15kfjAwKNB8hKubYRgQ5zNlJnEtv09OME1Ry5aGWSB54K1PgyIn6/grRWhxvyCL521Hm3dRvNdSyyaHMHr2T0YACMH29fAttKmNd81df1+xPZpsx0TG5wgk0ee3uUdWSlpNukGkhrwyxAfVY2dEnE/fAvvuaA2/az2HsM3ubm8Gf6iofm4CxgwF/SufPB+dDaSOAUIMH365wFiKfuKB9d6LdK28gA4CcD04IOtanJR6/7N4jvocBAZy+uTREff9J/QZ8m88J8PJoUmEw/UUN1fM7J5UKrpjxDdsHgzKNbYq6eRJrAUJriRXwpKN5UozUkEzVtJWgydedCXB5tBWDmtZeQ7iNFQUBEecAtUvrydALSzs5foQhr1N4VcZBV8030EmJl8UPavAJHCE4XqjDMnffiCQxltf8RCr7zkE0OR8TF2/uFZeuVf5DQd34Vk3qcTX/NpiUUOQ4=
+  app: home-automation-frontend
+  on:
+    repo: boschr/home-automation-ember
+    branch: develop
